@@ -6,7 +6,12 @@
 export default {
   clearMocks: true,
   collectCoverage: true,
-  collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.ts'
+  ],
+  coveragePathIgnorePatterns: [
+    '<rootDir>/src/.*/protocols/'
+  ],
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
   transform: {
