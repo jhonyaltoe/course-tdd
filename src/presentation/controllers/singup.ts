@@ -1,4 +1,4 @@
-import { type HttpRequest, type HttpResponse } from '../protocols/http'
+import { type HttpRequest, type HttpResponse } from '../protocols'
 import { MissingParamErrors } from '../errors'
 
 export class SingUpController {
