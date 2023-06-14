@@ -4,7 +4,7 @@ import { badRequest } from '../helpers'
 
 export class SingUpController {
   handle (httpRequest: HttpRequest): HttpResponse | undefined {
-    const requiredFields = ['name', 'email']
+    const requiredFields = ['name', 'email', 'password']
     for (const field of requiredFields) {
       if (!httpRequest.body[field]) {
         return badRequest(new MissingParamErrors(field))
