@@ -113,15 +113,6 @@ describe('SingUp Controller', () => {
     const { sut, emailValidatorStub } = makeSut()
     jest.spyOn(emailValidatorStub, 'isValid')
       .mockImplementation(() => { throw new Error() })
-
-    // class EmailValidatorStub implements EmailValidator {
-    //   isValid (email: string): boolean {
-    //     throw new Error()
-    //   }
-    // }
-    // const emailValidatorStub = new EmailValidatorStub()
-    // const sut = new SingUpController(emailValidatorStub)
-
     const httpRequest = {
       body: {
         name: 'any_name',
