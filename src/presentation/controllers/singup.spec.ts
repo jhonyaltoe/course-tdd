@@ -1,5 +1,5 @@
 import { SingUpController } from './singup'
-import { InvalidParamError, MissingParamError } from '../errors'
+import { InvalidParamError, MissingParamError, ServerError } from '../errors'
 import { type EmailValidator } from '../protocols'
 
 interface SutType {
@@ -107,5 +107,31 @@ describe('SingUp Controller', () => {
     }
     sut.handle(httpRequest)
     expect(isValidSpy).toHaveBeenCalledWith('any_email@email.com')
+  })
+
+  test('Should return 500 if EmailValidator throws', () => {
+    const { sut, emailValidatorStub } = makeSut()
+    jest.spyOn(emailValidatorStub, 'isValid')
+      .mockImplementation(() => { throw new Error() })
+
+    // class EmailValidatorStub implements EmailValidator {
+    //   isValid (email: string): boolean {
+    //     throw new Error()
+    //   }
+    // }
+    // const emailValidatorStub = new EmailValidatorStub()
+    // const sut = new SingUpController(emailValidatorStub)
+
+    const httpRequest = {
+      body: {
+        name: 'any_name',
+        email: 'any_email@email.com',
+        password: 'any_password',
+        passwordConfirmation: 'any_password'
+      }
+    }
+    const httpResponse = sut.handle(httpRequest)
+    expect(httpResponse?.statusCode).toBe(500)
+    expect(httpResponse?.body).toEqual(new ServerError())
   })
 })
