@@ -11,7 +11,8 @@ export default {
   ],
   coveragePathIgnorePatterns: [
     '<rootDir>/src/.*/protocols/',
-    '<rootDir>/src/.*-protocols.ts'
+    '<rootDir>/src/.*-protocols.ts',
+    '<rootDir>/src/domain/useCases/'
   ],
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
