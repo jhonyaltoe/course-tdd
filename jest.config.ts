@@ -10,7 +10,8 @@ export default {
     '<rootDir>/src/**/*.ts'
   ],
   coveragePathIgnorePatterns: [
-    '<rootDir>/src/.*/protocols/'
+    '<rootDir>/src/.*/protocols/',
+    '<rootDir>/src/.*-protocols.ts'
   ],
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',

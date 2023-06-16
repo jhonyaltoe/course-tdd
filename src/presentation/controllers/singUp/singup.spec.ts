@@ -1,8 +1,6 @@
 import { SingUpController } from './singup'
-import { InvalidParamError, MissingParamError, ServerError } from '../errors'
-import { type EmailValidator } from '../protocols'
-import { type AddAccount, type AddAccountModel } from '../../domain/useCases/add-account'
-import { type AccountModel } from '../../domain/models'
+import { InvalidParamError, MissingParamError, ServerError } from '../../errors'
+import { type EmailValidator, type AccountModel, type AddAccount, type AddAccountModel } from './singup-protocols'
 
 const makeAddAccount = (): AddAccount => {
   class AddAccountStub {
