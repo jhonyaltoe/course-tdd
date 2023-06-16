@@ -2,20 +2,20 @@
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
+import type { Config } from 'jest'
 
-export default {
+const config: Config = {
   clearMocks: true,
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts'
   ],
   coveragePathIgnorePatterns: [
-    '<rootDir>/src/.*/protocols/',
-    '<rootDir>/src/.*-protocols.ts',
-    '<rootDir>/src/domain/useCases/'
+    '<rootDir>/src/.*/index.ts',
+    '<rootDir>/src/presentation/controllers/singUp/singup-protocols.ts'
   ],
   coverageDirectory: 'coverage',
-  coverageProvider: 'v8',
+  coverageProvider: 'babel',
   transform: {
     '.+\\.ts$': 'ts-jest'
   },
@@ -23,3 +23,5 @@ export default {
     '<rootDir>/src'
   ]
 }
+
+export default config
