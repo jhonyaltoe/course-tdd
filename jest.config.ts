@@ -21,7 +21,8 @@ const config: Config = {
   },
   roots: [
     '<rootDir>/src'
-  ]
+  ],
+  preset: '@shelf/jest-mongodb'
 }
 
 export default config
