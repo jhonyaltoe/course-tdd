@@ -16,13 +16,13 @@ const config: Config = {
   ],
   coverageDirectory: 'coverage',
   coverageProvider: 'babel',
+  preset: '@shelf/jest-mongodb',
   transform: {
     '.+\\.ts$': 'ts-jest'
   },
   roots: [
     '<rootDir>/src'
-  ],
-  preset: '@shelf/jest-mongodb'
+  ]
 }
 
 export default config
