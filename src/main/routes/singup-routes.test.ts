@@ -10,7 +10,7 @@ describe('Singup Routes', () => {
       .post('/test-cors')
       .send({
         name: 'Jhony',
-        email: 'jhonymikea@gmail.com',
+        email: 'jhonymikealtoe@hotmail.com',
         password: '123',
         passwordConfirmation: '123'
       })
