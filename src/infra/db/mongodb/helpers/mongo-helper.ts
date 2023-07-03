@@ -15,10 +15,8 @@ export const MongoHelper = {
     return this.client.db().collection(name)
   },
 
-  map (documentResult: any, data: any): any {
-    return {
-      id: documentResult.insertedId.toString(),
-      ...data
-    }
+  map (data: any): any {
+    const { _id, ...dataWithoutId } = data
+    return Object.assign({}, { id: data._id, ...dataWithoutId })
   }
 }
