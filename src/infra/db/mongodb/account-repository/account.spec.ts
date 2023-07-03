@@ -3,7 +3,8 @@ import { AccountMongoRepository } from './account'
 
 describe('Account Mongo Repository', () => {
   beforeAll(async () => {
-    await MongoHelper.connect(globalThis.__MONGO_URI__)
+    const MONGO_URL = process.env.MONGO_URL as string
+    await MongoHelper.connect(MONGO_URL)
   })
 
   afterAll(async () => {
