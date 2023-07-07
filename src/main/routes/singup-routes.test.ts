@@ -16,7 +16,7 @@ describe('Singup Routes', () => {
     await accountCollection.deleteMany({})
   })
 
-  test('Should return non success', async () => {
+  test('Should return on success', async () => {
     app.post('/test-cors', (req, res) => {
       res.send()
     })
