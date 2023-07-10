@@ -1,7 +1,7 @@
 import { type HttpRequest } from '../../protocols'
 import { type EmailValidator } from '../singUp/singup-protocols'
 import { InvalidParamError, MissingParamError } from '../../errors'
-import { badRequest } from '../../helpers'
+import { badRequest, serverError } from '../../helpers'
 import { LoginController } from './login'
 
 const makeFakeRequest = (): HttpRequest => {
@@ -77,5 +77,14 @@ describe('Login Controller', () => {
     }
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse).toEqual(badRequest(new InvalidParamError('email')))
+  })
+
+  test('Should return 500 EmailValidator throws', async () => {
+    const { sut, emailValidatorStub } = makeSut()
+    jest.spyOn(emailValidatorStub, 'isValid').mockImplementationOnce(() => {
+      throw new Error()
+    })
+    const httpResponse = await sut.handle(makeFakeRequest())
+    expect(httpResponse).toStrictEqual(serverError(new Error()))
   })
 })
