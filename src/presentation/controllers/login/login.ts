@@ -1,7 +1,7 @@
 import { type Authentication, type EmailValidator } from '../singUp/singup-protocols'
 import { type HttpRequest, type HttpResponse, type Controller } from '../../protocols'
 import { InvalidParamError, MissingParamError } from '../../errors'
-import { badRequest, serverError } from '../../helpers'
+import { badRequest, serverError, unauthorized } from '../../helpers'
 
 export class LoginController implements Controller {
   private readonly emailValidator: EmailValidator
@@ -25,7 +25,10 @@ export class LoginController implements Controller {
       if (!isValid) {
         return badRequest(new InvalidParamError('email'))
       }
-      await this.authentication.auth(email, password)
+      const accessToken = await this.authentication.auth(email, password)
+      if (!accessToken) {
+        return unauthorized()
+      }
       return {
         body: {},
         statusCode: 0
