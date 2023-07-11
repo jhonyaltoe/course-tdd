@@ -1,5 +1,4 @@
-import { type Authentication, type EmailValidator } from '../singUp/singup-protocols'
-import { type HttpRequest, type HttpResponse, type Controller } from '../../protocols'
+import { type Authentication, type EmailValidator, type HttpRequest, type HttpResponse, type Controller } from './login-protocols'
 import { InvalidParamError, MissingParamError } from '../../errors'
 import { badRequest, serverError, unauthorized } from '../../helpers'
 
