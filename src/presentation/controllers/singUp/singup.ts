@@ -1,17 +1,11 @@
-import { type HttpRequest, type HttpResponse, type Controller, type EmailValidator, type AddAccount, type Validation } from './singup-protocols'
-import { InvalidParamError } from '../../errors'
+import { type HttpRequest, type HttpResponse, type Controller, type AddAccount, type Validation } from './singup-protocols'
 import { badRequest, serverError, ok } from '../../helpers'
 
 export class SingUpController implements Controller {
-  private readonly emailValidator: EmailValidator
-  private readonly addAccount: AddAccount
-  private readonly validation: Validation
-
-  constructor (emailValidator: EmailValidator, addAccount: AddAccount, validation: Validation) {
-    this.emailValidator = emailValidator
-    this.addAccount = addAccount
-    this.validation = validation
-  }
+  constructor (
+    private readonly addAccount: AddAccount,
+    private readonly validation: Validation
+  ) {}
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
@@ -20,8 +14,6 @@ export class SingUpController implements Controller {
         return badRequest(error)
       }
       const { name, email, password } = httpRequest.body
-      const isValid = this.emailValidator.isValid(email)
-      if (!isValid) return badRequest(new InvalidParamError('email'))
       const account = await this.addAccount.add({
         name,
         email,
