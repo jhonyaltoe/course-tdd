@@ -1,6 +1,6 @@
 import { SingUpController } from './singup'
 import { MissingParamError, ServerError } from '../../errors'
-import { type EmailValidator, type AccountModel, type AddAccount, type AddAccountModel, type HttpRequest, type Validation } from './singup-protocols'
+import { type AccountModel, type AddAccount, type AddAccountModel, type HttpRequest, type Validation } from './singup-protocols'
 import { ok, serverError, badRequest } from '../../helpers'
 
 const makeFakeRequest = (): HttpRequest => ({
@@ -37,18 +37,8 @@ const makeAddAccount = (): AddAccount => {
   return new AddAccountStub()
 }
 
-const makeEmailValidator = (): EmailValidator => {
-  class EmailValidatorStub implements EmailValidator {
-    isValid (email: string): boolean {
-      return true
-    }
-  }
-  return new EmailValidatorStub()
-}
-
 interface SutType {
   sut: SingUpController
-  emailValidatorStub: EmailValidator
   addAccountStub: AddAccount
   validationStub: Validation
 }
@@ -56,11 +46,9 @@ interface SutType {
 const makeSut = (): SutType => {
   const validationStub = makeValidation()
   const addAccountStub = makeAddAccount()
-  const emailValidatorStub = makeEmailValidator()
   const sut = new SingUpController(addAccountStub, validationStub)
   return {
     sut,
-    emailValidatorStub,
     addAccountStub,
     validationStub
   }
