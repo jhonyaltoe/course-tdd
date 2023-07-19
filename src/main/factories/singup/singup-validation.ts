@@ -1,6 +1,5 @@
-import { type Validation, RequiredFieldValidation, CompareFieldsValidation } from '../../../presentation/helpers/validators'
-import { EmailValidation } from '../../../presentation/helpers/validators/email-validation'
-import { ValidationComposite } from '../../../presentation/helpers/validators/validation-composite'
+import { type Validation } from '../../../presentation/protocols'
+import { RequiredFieldValidation, CompareFieldsValidation, EmailValidation, ValidationComposite } from '../../../presentation/helpers/validators'
 import { EmailValidatorAdapter } from '../../../utils/email.validator-adapter'
 
 export const makeSingUpValidation = (): ValidationComposite => {
