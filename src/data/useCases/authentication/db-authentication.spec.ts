@@ -125,4 +125,19 @@ describe('DbAuthentication UseCase', () => {
     const promise = sut.auth(makeFakeAuthentication())
     await expect(promise).rejects.toThrowError(/TokenGenerator error$/)
   })
+
+  test('Should throw if TokenGenerator throws', async () => {
+    const { sut, tokenGeneratorStub } = makeSut()
+    jest.spyOn(tokenGeneratorStub, 'generate').mockRejectedValue(
+      new Error('TokenGenerator error')
+    )
+    const promise = sut.auth(makeFakeAuthentication())
+    await expect(promise).rejects.toThrowError(/TokenGenerator error$/)
+  })
+
+  test('Should return an access token if succeeds', async () => {
+    const { sut } = makeSut()
+    const accessToken = await sut.auth(makeFakeAuthentication())
+    expect(accessToken).toBe('any_token')
+  })
 })
