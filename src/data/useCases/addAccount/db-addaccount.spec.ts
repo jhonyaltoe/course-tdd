@@ -1,5 +1,6 @@
 import { type AddAccountModel, type AddAccount } from '../../../domain/useCases'
-import { type Encrypter, type AddAccountRepository } from '../../protocols'
+import { type Encrypter } from '../../protocols/cryptografy'
+import { type AddAccountRepository } from '../../protocols/db'
 import { DbAddAccount } from './db-addaccount'
 import { type AccountModel } from './db-addaccount-protocols'
 
