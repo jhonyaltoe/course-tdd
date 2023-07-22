@@ -1,4 +1,4 @@
 export * from '../../protocols'
-export * from '../../../domain/models'
-export * from '../../../domain/useCases'
+export * from '../../../domain/models/account'
+export * from '../../../domain/useCases/add-account'
 export * from '../../protocols/validation'

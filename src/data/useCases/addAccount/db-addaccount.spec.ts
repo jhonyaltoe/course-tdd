@@ -1,8 +1,11 @@
-import { type AddAccountModel, type AddAccount } from '../../../domain/useCases'
-import { type Encrypter } from '../../protocols/cryptografy'
-import { type AddAccountRepository } from '../../protocols/db'
+import {
+  type AccountModel,
+  type AddAccountModel,
+  type AddAccount,
+  type Encrypter,
+  type AddAccountRepository
+} from './db-addaccount-protocols'
 import { DbAddAccount } from './db-addaccount'
-import { type AccountModel } from './db-addaccount-protocols'
 
 const makeFakeAccount = (): AccountModel => ({
   id: 'valid_id',
