@@ -50,4 +50,12 @@ describe('Bcrypt Adapter', () => {
     const isValid = await sut.compare('any_value', 'any_hash')
     expect(isValid).toBe(true)
   })
+
+  test('Should return false when compare fails', async () => {
+    const sut = makeSut()
+    const bcryptCompare = jest.fn().mockResolvedValue(false)
+    bcrypt.compare = bcryptCompare
+    const isValid = await sut.compare('any_value', 'wrong_hash')
+    expect(isValid).toBe(false)
+  })
 })
