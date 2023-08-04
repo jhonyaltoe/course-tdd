@@ -6,6 +6,7 @@
 		"esModuleInterop": true,
 		"allowJs": true,
 		"strictNullChecks": true,
+		"baseUrl": ".",
 		"paths": {
 			"@presentation/*": ["./src/presentation/*"],
 			"@domain/*": ["./src/domain/*"],
