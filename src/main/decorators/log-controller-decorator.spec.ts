@@ -1,7 +1,7 @@
 import { type HttpResponse, type Controller, type HttpRequest } from '../../presentation/protocols'
-import { type LogErrorRepository } from '../../data/protocols/db/log-error-repository'
+import { type LogErrorRepository } from '../../data/protocols/db/log/log-error-repository'
 import { type AccountModel } from '../../domain/models/account'
-import { LogContollerDecorator } from './log'
+import { LogContollerDecorator } from './log-controller-decorator'
 import { serverError, ok } from '../../presentation/helpers/http'
 
 const makeFakeRequest = (): HttpRequest => ({
