@@ -9,7 +9,7 @@ import { JwtAdapter } from '@infra/cryptografy/jwt-adapter/jwt-adapter'
 import { makeLoginValidation } from './login-validation-factory'
 import { LogContollerDecorator } from '../../decorators/log-controller-decorator'
 
-export const makeSingUpController = (): Controller => {
+export const makeLoginController = (): Controller => {
   const salt = 12
   const jwtAdapter = new JwtAdapter(env.jwtSecret)
   const bcryptAdapter = new BcryptAdapter(salt)
