@@ -1,6 +1,6 @@
 import { type EmailValidator, type Validation } from '@presentation/protocols'
 import { RequiredFieldValidation, ValidationComposite, CompareFieldsValidation, EmailValidation } from '@presentation/helpers/validators'
-import { makeSingUpValidation } from './singup-validation-factory'
+import { makeSignUpValidation } from './signup-validation-factory'
 
 jest.mock('@presentation/helpers/validators/validation-composite')
 
@@ -13,9 +13,9 @@ const makeEmailValidator = (): EmailValidator => {
   return new EmailValidatorStub()
 }
 
-describe('SingUpValidation Factory', () => {
+describe('SignUpValidation Factory', () => {
   test('Should call ValidationComposite with all validations', () => {
-    makeSingUpValidation()
+    makeSignUpValidation()
     const validations: Validation[] = []
     for (const field of ['name', 'email', 'password', 'passwordConfirmation']) {
       validations.push(new RequiredFieldValidation(field))

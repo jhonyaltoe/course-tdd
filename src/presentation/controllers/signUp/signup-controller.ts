@@ -1,7 +1,7 @@
-import { type HttpRequest, type HttpResponse, type Controller, type AddAccount, type Validation } from './singup-controller-protocols'
+import { type HttpRequest, type HttpResponse, type Controller, type AddAccount, type Validation } from './signup-controller-protocols'
 import { badRequest, serverError, ok } from '../../helpers/http'
 
-export class SingUpController implements Controller {
+export class SignUpController implements Controller {
   constructor (
     private readonly addAccount: AddAccount,
     private readonly validation: Validation

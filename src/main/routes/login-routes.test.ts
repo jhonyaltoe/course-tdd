@@ -23,7 +23,7 @@ describe('Login Routes', () => {
   describe('POST /signup', () => {
     test('Should return 200 on signup', async () => {
       await request(app)
-        .post('/api/singup')
+        .post('/api/signup')
         .send({
           name: 'Jhony',
           email: 'jhonymikealtoe@hotmail.com',

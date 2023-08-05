@@ -1,6 +1,6 @@
-import { SingUpController } from './singup-controller'
+import { SignUpController } from './signup-controller'
 import { MissingParamError, ServerError } from '../../errors'
-import { type AccountModel, type AddAccount, type AddAccountModel, type HttpRequest, type Validation } from './singup-controller-protocols'
+import { type AccountModel, type AddAccount, type AddAccountModel, type HttpRequest, type Validation } from './signup-controller-protocols'
 import { ok, serverError, badRequest } from '../../helpers/http'
 
 const makeFakeRequest = (): HttpRequest => ({
@@ -38,7 +38,7 @@ const makeAddAccount = (): AddAccount => {
 }
 
 interface SutType {
-  sut: SingUpController
+  sut: SignUpController
   addAccountStub: AddAccount
   validationStub: Validation
 }
@@ -46,7 +46,7 @@ interface SutType {
 const makeSut = (): SutType => {
   const validationStub = makeValidation()
   const addAccountStub = makeAddAccount()
-  const sut = new SingUpController(addAccountStub, validationStub)
+  const sut = new SignUpController(addAccountStub, validationStub)
   return {
     sut,
     addAccountStub,
@@ -54,7 +54,7 @@ const makeSut = (): SutType => {
   }
 }
 
-describe('SingUp Controller', () => {
+describe('SignUp Controller', () => {
   test('Should call AddAccount with correct values', async () => {
     const { sut, addAccountStub } = makeSut()
     const addSpy = jest.spyOn(addAccountStub, 'add')
