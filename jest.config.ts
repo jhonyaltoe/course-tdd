@@ -11,8 +11,8 @@ const config: JestConfigWithTsJest = {
     '<rootDir>/src/**/*.ts'
   ],
   coveragePathIgnorePatterns: [
-    '<rootDir>/src/.*/index.ts',
-    '<rootDir>/src/.*-protocols.ts',
+    '<rootDir>/src/.+/index.ts',
+    '<rootDir>/src/.+[.-]protocols.ts',
     '<rootDir>/src/main/.*'
   ],
   coverageDirectory: 'coverage',
