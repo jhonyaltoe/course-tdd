@@ -1,6 +1,6 @@
 import express from 'express'
 import setupMiddlewares from './middlewares'
-import setupRouts from './routs'
+import setupRouts from './routes'
 
 const app = express()
 setupMiddlewares(app)
